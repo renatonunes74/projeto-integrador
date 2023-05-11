@@ -1,7 +1,7 @@
 <div align="center">
 <img src="https://media-public.canva.com/C0TRw/MAE3u6C0TRw/1/tl.png" width=90px>
 
-# Projeto Integrador - Perifeira
+# Projeto Integrador - PeriFeira
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
 ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
@@ -18,8 +18,6 @@
 [💻 Desenvolvedores](#-desenvolvedores) •
 [📏 Organização do Projeto](#-organização-do-projeto)
 
-Este projeto faz parte da finalização do Bloco 2 e 3 do Bootcamp Full-Stack Java da turma 63 [Generation Brasil](https://brazil.generation.org/).
-
 </div>
 
 
@@ -34,12 +32,8 @@ Aplicamos os conceitos de:
 - Exceptions
 
 # Sobre o tema
+PeriFeira é uma loja online de alimentos orgânicos voltada para comunidades periféricas que prioriza alimentos sazonais e que seriam descartados por não serem considerados "bonitos", visando oferecer um custo mais acessível aos consumidores. 
 
-<div align="center">
-
-<frase conceitual do projeto>
-
-</div>
 
 ## 📑 Funcionalidades
 <funcoes>
@@ -78,6 +72,60 @@ Sistema desenvolvido em Java utilizando os conceitos de Programação Orientada 
    |   |    |- 📑 eap.pnp
    |- 📑 .gitignore
    |- 📑 README.md
+```
+
+### Diagrama de classes
+
+```mermaid
+classDiagram
+class Tema {
+  - id : Long
+  - descricao : String
+  - postagem : List ~Postagem~
+  + getAll()
+  + getById(Long id)
+  + getByDescricao(String descricao)
+  + postTema(Tema tema)
+  + putTema(Tema tema)
+  + deleteTema(Long id)
+}
+class Postagem {
+  - id : Long
+  - titulo : String
+  - texto: String
+  - data: LocalDateTime
+  - tema : Tema
+  - usuario : Usuario
+  + getAll()
+  + getById(Long id)
+  + getByTitulo(String titulo)
+  + postPostagem(Postagem postagem)
+  + putPostagem(Postagem postagem)
+  + deleteTema(Long id)
+}
+class Usuario {
+  - id : Long
+  - nome : String
+  - usuario : String
+  - senha : String
+  - foto : String
+  - postagem : List ~Postagem~
+  + getAll()
+  + getById(Long id)
+  + autenticarUsuario(UsuarioLogin usuarioLogin)
+  + cadastrarUsuario(Usuario usuario)
+  + atualizarUsuario(Usuario usuario)
+}
+class UsuarioLogin{
+  - id : Long
+  - nome : String
+  - usuario : String
+  - senha : String
+  - foto : String
+  - token : String
+}
+Tema --> Postagem
+Usuario --> Postagem
 ```
 
 ### Diagrama de entidade e relacionamento
